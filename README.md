@@ -61,7 +61,7 @@ and then hit enter. That runs the live reloading server that auto reloads when i
 
 Nevertheless, if it doesn't detect a change but a syntax error, it will just stop with an error. But as the container is still alive and you are in a Bash session, you can quickly restart it after fixing the error, running the same command ("up arrow" and "Enter").
 
-### App endpoins
+### App endpoints
 
 * Backend, JSON based web API based on OpenAPI: http://0.0.0.0:8000/api/
 
@@ -70,7 +70,7 @@ Nevertheless, if it doesn't detect a change but a syntax error, it will just sto
 * Alternative automatic documentation with ReDoc (from the OpenAPI backend): http://0.0.0.0:8000/redoc
 
 
-### Backend tests
+### tests
 
 To test the backend run:
 
@@ -79,3 +79,22 @@ sh ./scripts/test.sh
 ```
 
 The tests run with Pytest, modify and add tests to `./app/app/tests/`.
+
+### Lisnters 
+
+run:
+
+```bash
+sh ./scripts/lint.sh
+```
+
+for auto format run:
+
+```bash
+sh ./scripts/format.sh
+```
+
+```bash
+sh ./scripts/format-imports.sh
+```
+
