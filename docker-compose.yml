@@ -1,0 +1,32 @@
+version: '3.3'
+services:
+  mongodb:
+    image: mongo:latest
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./db:/data/db
+
+  queue:
+    image: rabbitmq:3
+    ports:
+      - '5672:5672'
+    env_file:
+      - .env
+
+  flower:
+    image: mher/flower
+    env_file:
+      - .env
+    ports:
+      - '5555:5555'
+    command:
+      - "--broker=amqp://guest@queue:5672//"
+      # For the "Broker" tab to work in the flower UI, uncomment the following command argument,
+      # and change the queue service's image as described in docker-compose.shared.base-images.yml
+      # - "--broker_api=http://guest:guest@queue:15672/api//"
